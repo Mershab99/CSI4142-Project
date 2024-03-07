@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: csi-metabase
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://pmint93.github.io/helm-charts
+    targetRevision: 2.11.0
+    helm:
+#      parameters:
+#        - name: someParameter
+#          value: someValue
+      valuesObject:
+        ingress:
+          className: nginx
+          enabled: true
+          hosts:
+            - csi4142-metabase.mershab.xyz
+  destination:
+    name: loft-new-project-vcluster-csi4142-cluster2
+    namespace: metabase
+  syncPolicy:
+    automated: 
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+      - priority=8
+
