@@ -19,7 +19,7 @@ spec:
           hosts:
             - csi4142-metabase.mershab.xyz
   destination:
-    name: loft-new-project-vcluster-csi4142-cluster2
+    name: loft-new-project-vcluster-csi4142-cluster3
     namespace: metabase
   syncPolicy:
     automated: 
