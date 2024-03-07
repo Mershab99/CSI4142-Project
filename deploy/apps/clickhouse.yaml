@@ -29,6 +29,7 @@ spec:
     volumeClaimTemplates:
       - name: data-storage-vc-template
         spec:
+          storageClassName: ceph-block
           accessModes:
             - ReadWriteOnce
           resources:
@@ -36,6 +37,7 @@ spec:
               storage: 3Gi
       - name: log-storage-vc-template
         spec:
+          storageClassName: ceph-block
           accessModes:
             - ReadWriteOnce
           resources:
