@@ -14,6 +14,29 @@ spec:
 #        - name: someParameter
 #          value: someValue
       valuesObject:
+        pluginsDirectory: /plugins
+        extraVolumes:
+          - name: plugins
+        extraVolumeMounts:
+          - name: plugins
+            mountPath: /plugins
+            readOnly: false
+
+        extraInitContainers:
+          - name: download-modules
+            image: "curlimages/curl:7.70.0"
+            imagePullPolicy: "IfNotPresent"
+            volumeMounts:
+              - name: plugins
+                mountPath: /plugins
+            workingDir: /plugins
+            command:
+              - "/bin/sh"
+              - "-ec"
+              - |
+                curl -Lso /plugins/clickhouse.metabase-driver.jar \
+                          https://github.com/ClickHouse/metabase-clickhouse-driver/releases/download/1.4.0/clickhouse.metabase-driver.jar
+
         ingress:
           className: nginx
           enabled: true
