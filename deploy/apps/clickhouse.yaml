@@ -21,7 +21,7 @@ spec:
           enabled: true
           hostname: csi4142-clickhouse.mershab.xyz
   destination:
-    name: loft-new-project-vcluster-csi4142-cluster3
+    name: loft-new-project-vcluster-csi4142-cluster
     namespace: clickhouse
   syncPolicy:
     automated: 
