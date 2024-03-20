@@ -1,45 +1,33 @@
-apiVersion: "clickhouse.altinity.com/v1"
-kind: "ClickHouseInstallation"
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
-  name: "csi4142-clickhouse"
+  name: csi-clickhouse
+  namespace: argocd
 spec:
-  configuration:
-    clusters:
-      - name: "csi4142-clickhouse"
-        # Templates are specified for this cluster explicitly
-        templates:
-          podTemplate: pod-template-with-volumes
-        layout:
-          shardsCount: 2
-          replicasCount: 2
+  project: default
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 5.3.1
+    chart: clickhouse
+    helm:
+#      parameters:
+#        - name: someParameter
+#          value: someValue
+      valuesObject:
+        global:
+          storageClass: "ceph-block"
+        ingress:
+          ingressClassName: nginx
+          enabled: true
+          hostname: csi4142-clickhouse.mershab.xyz
+  destination:
+    name: loft-new-project-vcluster-csi4142-cluster3
+    namespace: clickhouse
+  syncPolicy:
+    automated: 
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+      - priority=8
 
-  templates:
-    podTemplates:
-      - name: pod-template-with-volumes
-        spec:
-          containers:
-            - name: clickhouse
-              image: clickhouse/clickhouse-server:23.8
-              volumeMounts:
-                - name: data-storage-vc-template
-                  mountPath: /var/lib/clickhouse
-                - name: log-storage-vc-template
-                  mountPath: /var/log/clickhouse-server
-
-    volumeClaimTemplates:
-      - name: data-storage-vc-template
-        spec:
-          storageClassName: ceph-block
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 3Gi
-      - name: log-storage-vc-template
-        spec:
-          storageClassName: ceph-block
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 2Gi
