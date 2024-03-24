@@ -27,6 +27,10 @@ spec:
         global:
           storageClass: "ceph-block"
         ingress:
+          annotations:
+            nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+            nginx.ingress.kubernetes.io/cors-allow-headers: "X-Forwarded-For"
+            nginx.ingress.kubernetes.io/proxy-body-size: 8G
           ingressClassName: nginx
           enabled: true
           hostname: csi4142-clickhouse.mershab.xyz
