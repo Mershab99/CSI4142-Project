@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://pmint93.github.io/helm-charts
-    targetRevision: 2.11.0
+    targetRevision: 2.13.0
     chart: metabase
     helm:
 #      parameters:
@@ -34,7 +34,7 @@ spec:
               - "/bin/sh"
               - "-ec"
               - |
-                export METABASE_CLICKHOUSE_DRIVER_VERSION=1.4.0
+                export METABASE_CLICKHOUSE_DRIVER_VERSION=1.3.4
                 curl -L -o /plugins/ch.jar https://github.com/ClickHouse/metabase-clickhouse-driver/releases/download/$METABASE_CLICKHOUSE_DRIVER_VERSION/clickhouse.metabase-driver.jar
 
         ingress:
