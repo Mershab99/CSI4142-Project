@@ -14,6 +14,7 @@ spec:
 #        - name: someParameter
 #          value: someValue
       valuesObject:
+        shards: 1
         usersExtraOverrides: |
           <users>
             <default>
