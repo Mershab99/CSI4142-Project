@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: csi-clickhouse
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 5.3.1
+    chart: clickhouse
+    helm:
+#      parameters:
+#        - name: someParameter
+#          value: someValue
+      valuesObject:
+        shards: 1
+        usersExtraOverrides: |
+          <users>
+            <default>
+             <access_management>1</access_management>
+            </default>
+          </users>
+
+        auth:
+          username: csi
+          password: iceberg
+        global:
+          storageClass: "ceph-block"
+        ingress:
+          annotations:
+            nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+            nginx.ingress.kubernetes.io/cors-allow-headers: "X-Forwarded-For"
+            nginx.ingress.kubernetes.io/proxy-body-size: 8G
+          ingressClassName: nginx
+          enabled: true
+          hostname: csi4142-clickhouse.mershab.xyz
+  destination:
+    name: loft-new-project-vcluster-csi4142-cluster
+    namespace: clickhouse
+  syncPolicy:
+    automated: 
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+      - priority=8
+
