@@ -1,4 +1,4 @@
 pandas==2.0.3
 matplotlib
-clickhouse_driver
+clickhouse_connect
 numpy
