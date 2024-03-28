@@ -2,3 +2,5 @@ pandas==2.0.3
 matplotlib
 clickhouse_driver
 numpy
+requests
+beautifulsoup4
