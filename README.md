@@ -14,7 +14,7 @@ CSI4142 Project
 
 #### Please Read **BEFORE** Running Jupyter Notebooks!
 
-- Download the datasets here: [Google Drive Link](GOOGLE LINK HERE)
+- Download the datasets here: [Google Drive Link](https://drive.google.com/drive/folders/1SJtowq7BtmNrD8x_OwQU8YuMUtQ4u9WG?usp=drive_link)
 - Create a folder named `data` in the root of the project
 - Extract and place the source data in the `data` folder.
     - The subdirectory should have each dimension data in it in order for the jupyter notebooks to work.
