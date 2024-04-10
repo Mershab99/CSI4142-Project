@@ -9,6 +9,11 @@ CSI4142 Project
 - [Clickhouse](https://CSI4142-clickhouse.mershab.xyz/play)
 - [Metabase](https://CSI4142-metabase.mershab.xyz)
 
+## Public Dashboard Link:
+[Click Here!](http://csi4142-metabase.mershab.xyz/public/dashboard/8276e647-29fd-4238-81dc-f04ca0f4f2d5)
+#### NOTE: The clickhouse connection is not reliable so some visualizations may show up as "No Data!". Please be patient and refresh, or try again in a few moments. We PROMISE every visualization works and has data behind it!
+
+We believe this is due to the third party JDBC Driver that Metabase uses to connect to clickhouse.
 
 ## Jupyter Notebook Instructions
 
@@ -20,6 +25,4 @@ CSI4142 Project
     - The subdirectory should have each dimension data in it in order for the jupyter notebooks to work.
 - Execute the notebooks!
 
-#### NOTE: The clickhouse connection is not reliable so some cells may fail, and will have to be re-run.
-
-Public Dashboard link will be up upon final project delivery
+#### NOTE: Again, The clickhouse connection is not reliable so some cells may fail, and will have to be re-run.
