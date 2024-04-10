@@ -1,5 +1,4 @@
 # CSI4142-Project
-CSI4142 Project
 
 ### Mershab Issadien 300027272
 ### Alessandro Miguel Tirado 8349209
