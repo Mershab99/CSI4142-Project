@@ -7,6 +7,10 @@ CSI4142 Project
 
 ## Data Viewing
 - [Clickhouse](https://CSI4142-clickhouse.mershab.xyz/play)
+
+Username: csi
+Password: iceberg
+
 - [Metabase](https://CSI4142-metabase.mershab.xyz)
 
 ## Public Dashboard Link:
